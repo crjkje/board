@@ -2,6 +2,7 @@ package com.example.board.biz.domain.member;
 
 import com.example.board.biz.domain.enums.Authority;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,13 +15,13 @@ import javax.persistence.*;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member_id")
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "passwd", nullable = false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @Column(name = "NAME", nullable = false)
@@ -29,4 +30,12 @@ public class Member {
     @Enumerated(EnumType.STRING)
     @Column(name = "AUTHORITY",nullable = false)
     private Authority authority;
+
+    @Builder
+    public Member(String email, String password, String name, Authority authority) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.authority = authority;
+    }
 }
