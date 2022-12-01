@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class AuthController {
@@ -16,7 +18,8 @@ public class AuthController {
     private final AuthServiceImpl authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<ResponseDto.MemberResponse> signUp(@RequestBody RequestDto.SignUpRequest signUpRequest) {
-        return ResponseEntity.ok(authService.signUp(signUpRequest));
+    public ResponseEntity<String> signUp(@RequestBody @Valid RequestDto.SignUpRequest signUpRequest) {
+        authService.signUp(signUpRequest);
+        return ResponseEntity.ok("회원가입 완료");
     }
 }
