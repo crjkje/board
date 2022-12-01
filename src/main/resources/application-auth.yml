@@ -1,0 +1,3 @@
+aesByteEncryptor:
+  secret: "JKBoardPassword"
+  salt: "123F123F123A"
