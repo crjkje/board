@@ -5,13 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class ResponseDto {
 
     @Getter
     @AllArgsConstructor
     @Builder
     public static class MemberResponse {
+        @Email
+        @NotBlank
         private String email;
+        @NotBlank
         private String name;
 
         public static MemberResponse of(Member member) {
