@@ -1,7 +1,10 @@
 package com.example.board.biz.config;
 
 
+import com.example.board.biz.config.jwt.JwtAccessDeniedHandler;
+import com.example.board.biz.config.jwt.JwtAuthenticationEntryPoint;
 import com.example.board.biz.domain.auth.CryptUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +16,12 @@ import org.springframework.security.crypto.encrypt.AesBytesEncryptor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Value("${aesByteEncryptor.secret}")
     String secret;
@@ -40,6 +46,10 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
