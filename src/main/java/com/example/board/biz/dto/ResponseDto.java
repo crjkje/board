@@ -4,7 +4,6 @@ import com.example.board.biz.domain.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -30,19 +29,12 @@ public class ResponseDto {
     }
 
     @Getter
-    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
     public static class TokenResponse {
         private String grantType;
         private String accessToken;
         private String refreshToken;
         private Long tokenExpiresIn;
-
-        @Builder
-        public TokenResponse(String grantType, String accessToken, String refreshToken, Long tokenExpiresIn) {
-            this.grantType = grantType;
-            this.accessToken = accessToken;
-            this.refreshToken = refreshToken;
-            this.tokenExpiresIn = tokenExpiresIn;
-        }
     }
 }
