@@ -5,4 +5,4 @@ aesByteEncryptor:
 # HS512 알고리즘을 사용하기 떄문에 512bit (64byte 이상의 secret key를 사용해야 한다.)
 # Secret 값은 특정 문자열을 Base64로 인코딩한 값 사용
 jwt:
-  secret: "amtib2FyZF8yMDE1MDUzMTIwMjMwNTA2MTk5MzA5MjQxOTkzMTAyOV9qa2JvYXJk"
+  secret: amtib2FyZHByb2plY3Rqd3RzZWNyZXRrZXlfSXdpbGxiZWFjb25zdGFudGx5Z3Jvd2luZ2RldmVsb3Blcl90aGVqd3Rqd2FzcGVjaWZpY2F0aW9uc3RhdGVzdGhhdGtleXN1c2Vkd2l0aEhTNTEyTXVzdGhhdmVhc2l6ZQ==
