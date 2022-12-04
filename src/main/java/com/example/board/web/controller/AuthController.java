@@ -22,4 +22,10 @@ public class AuthController {
         authService.signUp(signUpRequest);
         return ResponseEntity.ok("회원가입 완료");
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<ResponseDto.TokenResponse> login(@RequestBody RequestDto.LoginRequest loginRequestDto) {
+        return ResponseEntity.ok(authService.login(loginRequestDto));
+    }
+
 }
