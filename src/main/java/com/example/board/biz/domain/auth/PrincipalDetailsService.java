@@ -16,13 +16,14 @@ import java.util.Collections;
 @Service
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
-
+    private final CryptUtils cryptUtils;
     private final MemberRepository memberRepository;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return memberRepository.findByEmail(username)
+        String encryptEmail = cryptUtils.encryptEmail(username);
+        return memberRepository.findByEmail(encryptEmail)
                 .map(this::createUserDetails)
                 .orElseThrow(() -> new UsernameNotFoundException(username + "을 찾지 못하였습니다."));
     }
