@@ -2,7 +2,7 @@ package com.example.board.web.controller;
 
 import com.example.board.biz.dto.RequestDto;
 import com.example.board.biz.dto.ResponseDto;
-import com.example.board.biz.service.auth.AuthServiceImpl;
+import com.example.board.biz.service.auth.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthServiceImpl authService;
+    private final AuthService authService;
 
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody @Valid RequestDto.SignUpRequest signUpRequest) {

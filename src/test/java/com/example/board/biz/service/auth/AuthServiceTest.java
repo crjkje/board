@@ -16,12 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
-class AuthServiceImplTest {
+class AuthServiceTest {
     @Autowired
     private MemberRepository memberRepository;
 
     @Autowired
-    private AuthServiceImpl authService;
+    private AuthService authService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
