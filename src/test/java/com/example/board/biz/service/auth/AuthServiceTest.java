@@ -89,4 +89,22 @@ class AuthServiceImplTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("로그인 테스트")
+    class loginTest {
+        @Nested
+        @DisplayName("성공 사례")
+        class successCase {
+
+        }
+
+        @Nested
+        @DisplayName("실패 사례")
+        class failCase {
+
+        }
+
+    }
+
 }
